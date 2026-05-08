@@ -134,7 +134,7 @@ export default function Home() {
 }
 
 function VouchCard() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLAnchorElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -149,9 +149,12 @@ function VouchCard() {
   }, []);
 
   return (
-    <div
+    <a
+      href="https://vouchpls.xyz"
+      target="_blank"
+      rel="noopener noreferrer"
       ref={ref}
-      className={`relative bg-red rounded-2xl p-8 sm:p-12 md:p-16 transition-all duration-700 ${
+      className={`block relative bg-red rounded-2xl p-8 sm:p-12 md:p-16 transition-all duration-700 cursor-pointer hover:scale-[1.02] ${
         visible
           ? "opacity-100 translate-y-0 scale-100"
           : "opacity-0 translate-y-12 scale-95"
@@ -174,6 +177,6 @@ function VouchCard() {
       <span className="inline-block mt-6 text-xs font-mono px-3 py-1 rounded bg-background/20 text-background/80">
         In Progress
       </span>
-    </div>
+    </a>
   );
 }
