@@ -123,7 +123,10 @@ export default function Home() {
             />
             <span>&copy; {new Date().getFullYear()} Fracture</span>
           </div>
-          <span>Break the old. Build the new.</span>
+          <div className="flex items-center gap-4">
+            <a href="/privacy" className="hover:text-foreground/50 transition-colors">Privacy Policy</a>
+            <span>Break the old. Build the new.</span>
+          </div>
         </div>
       </footer>
     </main>
