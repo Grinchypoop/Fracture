@@ -21,7 +21,12 @@ export default function Home() {
             <span className="text-lg font-semibold tracking-tight text-background">fracture</span>
           </div>
           <div className="flex items-center gap-8">
-            <span className="text-sm text-background/70">vouch!</span>
+            <a
+              href="#projects"
+              className="text-sm font-bold italic text-background/70 hover:text-background transition-colors"
+            >
+              vouch!
+            </a>
           </div>
         </nav>
 
