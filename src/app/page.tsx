@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   return (
@@ -18,24 +21,7 @@ export default function Home() {
             <span className="text-lg font-semibold tracking-tight text-background">fracture</span>
           </div>
           <div className="flex items-center gap-8">
-            <a
-              href="#projects"
-              className="text-sm text-background/70 hover:text-background transition-colors"
-            >
-              Projects
-            </a>
-            <a
-              href="#about"
-              className="text-sm text-background/70 hover:text-background transition-colors"
-            >
-              About
-            </a>
-            <a
-              href="#contact"
-              className="text-sm px-4 py-2 border border-background/30 text-background hover:bg-background hover:text-red transition-all rounded"
-            >
-              Get in touch
-            </a>
+            <span className="text-sm text-background/70">vouch!</span>
           </div>
         </nav>
 
@@ -71,23 +57,7 @@ export default function Home() {
           Things we&apos;re building, breaking, and shipping.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <ProjectCard
-            title="Coming Soon"
-            description="The first fracture is forming. Stay tuned."
-            tag="In Progress"
-          />
-          <ProjectCard
-            title="Coming Soon"
-            description="Something new is breaking through."
-            tag="Planned"
-          />
-          <ProjectCard
-            title="Coming Soon"
-            description="The old ways won't hold much longer."
-            tag="Planned"
-          />
-        </div>
+        <VouchCard />
       </section>
 
       {/* Divider */}
@@ -105,9 +75,9 @@ export default function Home() {
             About <span className="text-red">Fracture</span>
           </h2>
           <p className="text-foreground/60 text-lg leading-relaxed mb-6">
-            Fracture isn&apos;t a company in the traditional sense. It&apos;s a vehicle for
-            building things that matter. We take what&apos;s broken, outdated, or
-            overcomplicated — and we break it further until something better
+            Fracture is a historian&apos;s pet project, a vehicle for building
+            things that matter. She takes what&apos;s broken, outdated, or
+            overcomplicated and breaks it further until something better
             emerges.
           </p>
           <p className="text-foreground/60 text-lg leading-relaxed">
@@ -157,27 +127,47 @@ export default function Home() {
   );
 }
 
-function ProjectCard({
-  title,
-  description,
-  tag,
-}: {
-  title: string;
-  description: string;
-  tag: string;
-}) {
+function VouchCard() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.2 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="group relative border border-foreground/10 rounded-lg p-6 hover:border-red/30 transition-all duration-300 bg-foreground/[0.02]">
-      <div className="absolute inset-0 bg-red/[0.02] opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
-      <div className="relative">
-        <span className="inline-block text-xs font-mono px-2 py-1 rounded bg-red/10 text-red/80 mb-4">
-          {tag}
-        </span>
-        <h3 className="text-xl font-semibold mb-2 group-hover:text-red transition-colors">
-          {title}
+    <div
+      ref={ref}
+      className={`relative bg-red rounded-2xl p-12 md:p-16 transition-all duration-700 ${
+        visible
+          ? "opacity-100 translate-y-0 scale-100"
+          : "opacity-0 translate-y-12 scale-95"
+      }`}
+    >
+      <div className="flex items-center gap-4 mb-6">
+        {/* Pac-Man ghost in black */}
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12V21H18L16.5 19L15 21H12L10.5 19L9 21H6L4.5 19L3 21V12Z" />
+          <circle cx="9" cy="10" r="1.5" fill="white" />
+          <circle cx="15" cy="10" r="1.5" fill="white" />
+        </svg>
+        <h3 className="text-4xl md:text-5xl font-bold text-background tracking-tight">
+          Vouch!
         </h3>
-        <p className="text-foreground/40 text-sm">{description}</p>
       </div>
+      <p className="text-background/70 text-xl md:text-2xl font-medium">
+        Don&apos;t get ghosted.
+      </p>
+      <span className="inline-block mt-6 text-xs font-mono px-3 py-1 rounded bg-background/20 text-background/80">
+        In Progress
+      </span>
     </div>
   );
 }
