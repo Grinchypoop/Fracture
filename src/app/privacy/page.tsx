@@ -292,7 +292,7 @@ export default function PrivacyPolicy() {
             />
             <span>&copy; {new Date().getFullYear()} Fracture</span>
           </div>
-          <span>Break the old. Build the new.</span>
+          <span>Reshape what&apos;s possible.</span>
         </div>
       </footer>
     </main>

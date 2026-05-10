@@ -13,17 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fracture — Break the Old. Build the New.",
+  title: "Fracture — Reshape What's Possible.",
   description:
-    "We break the old and create something new. Shipping projects that challenge the status quo.",
+    "We reshape what's possible. Shipping projects that challenge the status quo.",
   icons: {
     icon: "/favicon.ico",
     apple: "/logo.png",
   },
   openGraph: {
-    title: "Fracture — Break the Old. Build the New.",
+    title: "Fracture — Reshape What's Possible.",
     description:
-      "We break the old and create something new. Shipping projects that challenge the status quo.",
+      "We reshape what's possible. Shipping projects that challenge the status quo.",
     images: ["/logo.png"],
   },
 };

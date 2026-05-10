@@ -41,9 +41,7 @@ export default function Home() {
               height={160}
               className="mx-auto mb-4 sm:mb-6 w-[180px] sm:w-[280px] h-auto"
             />
-            Break the old.
-            <br />
-            Build the new.
+            Reshape what&apos;s possible.
           </h1>
         </div>
       </section>
@@ -125,7 +123,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <a href="/privacy" className="hover:text-foreground/50 transition-colors">Privacy Policy</a>
-            <span>Break the old. Build the new.</span>
+            <span>Reshape what&apos;s possible.</span>
           </div>
         </div>
       </footer>
